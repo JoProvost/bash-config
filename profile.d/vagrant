@@ -1,3 +1,5 @@
+#!/bin/bash
+
 _vagrant() 
 {
     local cur prev opts base
