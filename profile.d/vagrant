@@ -17,7 +17,7 @@ _vagrant()
     #  Complete the arguments to some of the basic commands.
     #
     case "${prev}" in
-	ssh|ssh-config|up|destroy|hostmanager|status)
+	ssh|ssh-config|up|destroy|provision|hostmanager|status)
 	    local running=$(echo .vagrant/machines/* | sed 's#.vagrant/machines/##g' )
 	    COMPREPLY=( $(compgen -W "${running}" -- ${cur}) )
             return 0
