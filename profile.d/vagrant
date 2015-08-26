@@ -10,7 +10,9 @@ _vagrant()
     #
     #  The basic options we'll complete.
     #
-    opts="-v -h box destroy halt help hostmanager init package plugin provision reload resume ssh ssh-config status suspend up"
+    [ "${VAGRANT_OPTIONS-}" ] || VAGRANT_OPTIONS="-v -h $(vagrant list-commands | grep '  ' | awk '{ print $1; }')"
+
+    opts="$VAGRANT_OPTIONS"
 
 
     #
