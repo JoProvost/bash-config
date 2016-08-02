@@ -30,7 +30,7 @@ function __git_prompt {
     # Based on https://gist.github.com/woods/31967
 
     # Set color based on clean/staged/dirty
-    git_status="$(git status 2> /dev/null)"
+    git_status="$(LANGUAGE=en git status 2> /dev/null)"
     if [[ ${git_status} =~ "working directory clean" ]]; then
         state="${Green}"
     elif [[ ${git_status} =~ "Changes to be committed" ]]; then
@@ -69,8 +69,7 @@ function __git_fetch {
     fi
 
     if [[ "${fetch_required}" == "1" ]]; then
-        echo "Remote information is outdated. Running git fetch."
-        git fetch --all
+        git fetch --all >/dev/null 2>&1 &
     fi
 
 }
